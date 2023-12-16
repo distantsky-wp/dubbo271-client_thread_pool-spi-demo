@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://dubbo.apache.org/schema/dubbo
+       https://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+
+    <dubbo:application name="test-provider" logger="slf4j" >
+        <dubbo:parameter key="qos.enable" value="false"/>
+    </dubbo:application>
+    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181"/>
+    <dubbo:protocol name="dubbo" port="18089"></dubbo:protocol>
+
+    <dubbo:service interface="org.wp.test.main.call.service.TestService" ref="testService" dynamic="true" />
+    <bean id="testService" class="org.wp.test.main.impl.TestServiceImpl"/>
+
+</beans>
