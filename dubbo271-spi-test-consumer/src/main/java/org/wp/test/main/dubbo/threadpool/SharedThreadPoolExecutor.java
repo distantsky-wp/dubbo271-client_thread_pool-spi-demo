@@ -13,7 +13,7 @@ import java.util.function.Supplier;
 
 /**
  * @class: SharedThreadPoolExecutor
- * @desc:
+ * @desc: Dubbo Client端共享线程池实现
  * @author: wang-p
  * @date: 2023/12/16
  * @version: 1.0.0

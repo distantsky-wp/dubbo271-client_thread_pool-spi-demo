@@ -14,7 +14,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * @class: SharedRejectExecutionHandler
- * @desc:
+ * @desc: Dubbo Client共享线程池队列、线程池满后的拒绝策略
  * @author: wang-p
  * @date: 2023/12/16
  * @version: 1.0.0
@@ -27,14 +27,21 @@ public class SharedRejectExecutionHandler implements RejectedExecutionHandler {
     public void rejectedExecution(Runnable r, ThreadPoolExecutor e) {
         ExecutorService handlerSharedExecutor = getHandlerSharedExecutor();
         if (handlerSharedExecutor != null) {
+            // 使用默认线程池执行
             log.info("reject policy is Triggered, default thread-pool[SHARED_EXECUTOR] execute the task");
             handlerSharedExecutor.execute(r);
         } else {
+            // 使用提交线程直接执行
             log.info("reject policy is Triggered, current thread execute the task");
             r.run();
         }
     }
 
+    /**
+     * 获取Dubbo默认的cached线程池
+     *
+     * @return
+     */
     protected ExecutorService getHandlerSharedExecutor() {
         Field sharedExecutorField = ReflectionUtils.findField(WrappedChannelHandler.class,
                 "SHARED_EXECUTOR",

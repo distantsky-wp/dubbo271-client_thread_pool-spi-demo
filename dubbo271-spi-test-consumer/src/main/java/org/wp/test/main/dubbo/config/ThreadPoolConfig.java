@@ -7,7 +7,7 @@ import lombok.Getter;
 
 /**
  * @class: ThreadPoolConfig
- * @desc:
+ * @desc: Dubbo Client端共享线程池配置项
  * @author: wang-p
  * @date: 2023/12/16
  * @version: 1.0.0

@@ -9,7 +9,7 @@ import org.wp.test.main.ApplicationConsumer;
 
 /**
  * @class: LogBackShutdownHook
- * @desc:
+ * @desc: logback关闭Hook
  * @author: wang-p
  * @date: 2023/12/16
  * @version: 1.0.0

@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @class: SharedThreadPool
- * @desc:
+ * @desc: Dubbo Client端共享线程池SPI
  * @author: wang-p
  * @date: 2023/12/16
  * @version: 1.0.0
